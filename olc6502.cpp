@@ -78,3 +78,11 @@ void olc6502::SetFlag(FLAGS6502 f, bool v)
 	else
 		status &= ~f;
 }
+
+// Addressing Modes
+
+uint8_t olc6502::IMP()
+{
+	addr_abs = pc++;
+	return 0;
+}

@@ -1,19 +1,23 @@
+#pragma once
 #include <cstdint>
+#include <array>
+
 #include "olc6502.h"
 
 class Bus
 {
 public:
-    Bus();
-    ~Bus();
+	Bus();
+	~Bus();
 
-public: // Dispositivos do bus (barramento)
-    olc6502 cpu;
+public: // Devices on bus
+	olc6502 cpu;
 
-    // FAKE RAM
-    std::array<uint8_t, 64 * 1024> ram;
+	// Fake RAM for this part of the series
+	std::array<uint8_t, 64 * 1024> ram;
 
-public: // Bus Leitura/Escrita
-    void write(uint16_t addr, uint8_t data);
-    uint8_t read(uint16_t addr, bool bReadOnly = false);
+
+public: // Bus Read & Write
+	void write(uint16_t addr, uint8_t data);
+	uint8_t read(uint16_t addr, bool bReadOnly = false);
 };
